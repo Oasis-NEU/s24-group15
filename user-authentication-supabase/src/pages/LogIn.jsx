@@ -1,7 +1,8 @@
 import React, { useState } from 'react'; // Importing React and useState hook
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../client';
-const LogIn = () => { // Declaring a functional component named App
+const LogIn = ({setToken}) => { // Declaring a functional component named App
+  let navigate = useNavigate()
   // State declaration: formData stores the form data, setFormData updates the form data
   const [formData, setFormData] = useState({
     email: '',    // Initially empty email
@@ -25,12 +26,14 @@ async function handleSubmit(e){
   try {
     const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
-        password: formData.email,
+        password: formData.password,
       })
 
     
     if (error) throw error  
     console.log(data)
+    setToken(data)
+    navigate('/homepage')
     // alert('Check your email for verification link')
   
 
