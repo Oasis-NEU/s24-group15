@@ -1,74 +1,65 @@
+// LogIn.jsx
+
 import React, { useState } from 'react'; // Importing React and useState hook
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../client';
-const LogIn = ({setToken}) => { // Declaring a functional component named App
-  let navigate = useNavigate()
-  // State declaration: formData stores the form data, setFormData updates the form data
+import './LogIn.css'; // Import the CSS file
+
+const LogIn = ({ setToken }) => {
+  let navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    email: '',    // Initially empty email
-    password: ''  // Initially empty password
+    email: '',
+    password: ''
   });
 
-  console.log(formData); // Logging the current form data to the console
-
-  // Event handler for input changes
   function handleChange(event) {
-    setFormData((prevFormData) => { // Updating form data based on previous state
-      return {
-        ...prevFormData,                  // Keeping previous form data
-        [event.target.name]: event.target.value // Updating the changed field
-      };
-    });
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [event.target.name]: event.target.value
+    }));
   }
 
-async function handleSubmit(e){
-  e.preventDefault()
-  try {
-    const { data, error } = await supabase.auth.signInWithPassword({
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
-      })
+      });
 
-    
-    if (error) throw error  
-    console.log(data)
-    setToken(data)
-    navigate('/homepage')
-    // alert('Check your email for verification link')
-  
-
-
-} catch (error) {
-    alert(error)
+      if (error) throw error;
+      console.log(data);
+      setToken(data);
+      navigate('/homepage');
+    } catch (error) {
+      alert(error);
+    }
   }
 
-}
-
   return (
-    <div>
-      <form onSubmit={handleSubmit}> {/* Form for user input */}
-
-        {/* Input field for email */}
-        <input 
-          placeholder='Email'    // Placeholder text for user guidance
-          name='email'           // Unique identifier for the input field
-          onChange={handleChange} // Event handler for input changes
+    <div className="login-container">
+      <form onSubmit={handleSubmit}>
+        <input
+          className="login-input"
+          placeholder="Email"
+          name="email"
+          onChange={handleChange}
         />
 
-        {/* Input field for password */}
-        <input 
-          placeholder='Password' // Placeholder text for user guidance
-          name='password'        // Unique identifier for the input field
+        <input
+          className="login-input"
+          placeholder="Password"
+          name="password"
           type="password"
-          onChange={handleChange} // Event handler for input changes
+          onChange={handleChange}
         />
 
-        {/* Submit button */}
-        <button type='submit'>Submit</button> {/* Button to submit the form */}
+        <button className="login-submit" type="submit">Submit</button>
       </form>
-      Don't have an account? <Link to= '/signup'>Sign Up</Link>
+      Don't have an account? <Link className="signup-link" to="/signup">Sign Up</Link>
     </div>
   );
 };
 
-export default LogIn; // Exporting the App component as the default export
+export default LogIn;

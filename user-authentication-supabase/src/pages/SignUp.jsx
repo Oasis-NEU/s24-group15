@@ -1,80 +1,71 @@
-import React, { useState } from 'react'; // Importing React and useState hook
+// SignUp.jsx
+
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../client';
-const SignUp = () => { // Declaring a functional component named App
-  // State declaration: formData stores the form data, setFormData updates the form data
+import './SignUp.css';
+
+const SignUp = () => {
   const [formData, setFormData] = useState({
-    fullName: '', // Initially empty full name
-    email: '',    // Initially empty email
-    password: ''  // Initially empty password
+    fullName: '',
+    email: '',
+    password: ''
   });
 
-  console.log(formData); // Logging the current form data to the console
-
-  // Event handler for input changes
   function handleChange(event) {
-    setFormData((prevFormData) => { // Updating form data based on previous state
-      return {
-        ...prevFormData,                  // Keeping previous form data
-        [event.target.name]: event.target.value // Updating the changed field
-      };
-    });
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [event.target.name]: event.target.value
+    }));
   }
 
-async function handleSubmit(e){
-  e.preventDefault()
-  try {
-    const { data, error } = await supabase.auth.signUp(
-      {
+  async function handleSubmit(e) {
+    e.preventDefault();
+    try {
+      const { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
           data: {
-            fullname_name: formData.fullname,
+            fullname_name: formData.fullName,
           }
         }
-      }
-    )
-    if (error) throw error  
-    alert('Check your email for verification link')
-    
-  } catch (error) {
-    alert(error)
+      });
+      
+      if (error) throw error;
+      alert('Check your email for verification link');
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
-}
-
   return (
-    <div>
-      <form onSubmit={handleSubmit}> {/* Form for user input */}
-        {/* Input field for full name */}
-        <input 
-          placeholder='Fullname' // Placeholder text for user guidance
-          name='fullName'        // Unique identifier for the input field
-          onChange={handleChange} // Event handler for input changes
+    <div className="signup-container">
+      <form onSubmit={handleSubmit}>
+        <input
+          className="signup-input"
+          placeholder="Full Name"
+          name="fullName"
+          onChange={handleChange}
         />
-
-        {/* Input field for email */}
-        <input 
-          placeholder='Email'    // Placeholder text for user guidance
-          name='email'           // Unique identifier for the input field
-          onChange={handleChange} // Event handler for input changes
+        <input
+          className="signup-input"
+          placeholder="Email"
+          name="email"
+          onChange={handleChange}
         />
-
-        {/* Input field for password */}
-        <input 
-          placeholder='Password' // Placeholder text for user guidance
-          name='password'        // Unique identifier for the input field
+        <input
+          className="signup-input"
+          placeholder="Password"
+          name="password"
           type="password"
-          onChange={handleChange} // Event handler for input changes
+          onChange={handleChange}
         />
-
-        {/* Submit button */}
-        <button type='submit'>Submit</button> {/* Button to submit the form */}
+        <button className="signup-submit" type="submit">Submit</button>
       </form>
-      Already have an account? <Link to= '/'>LogIn</Link>
+      Already have an account? <Link className="login-link" to="/">Log In</Link>
     </div>
   );
 };
 
-export default SignUp; // Exporting the App component as the default export
+export default SignUp;

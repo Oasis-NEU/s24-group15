@@ -1,9 +1,14 @@
-import React from 'react'
+// Homepage.jsx
 
-const Homepage = ({token}) => {
+import React from 'react';
+import './Homepage.css';
+
+const Homepage = ({ token }) => {
   return (
-    <div>Welcome back, {token.user.user_metadata.full_name}</div>
-  )
-}
+    <div className="homepage-container">
+      Welcome back, {token.user.user_metadata.full_name}
+    </div>
+  );
+};
 
-export default Homepage
+export default Homepage;
