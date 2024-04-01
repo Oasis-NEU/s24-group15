@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../client';
+import { useNavigate } from 'react-router-dom';
 import './SignUp.css';
 
 const SignUp = () => {
@@ -27,7 +28,7 @@ const SignUp = () => {
         password: formData.password,
         options: {
           data: {
-            fullname_name: formData.fullName,
+            full_name: formData.fullName, 
           }
         }
       });

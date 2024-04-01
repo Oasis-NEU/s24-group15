@@ -27,15 +27,19 @@ const LogIn = ({ setToken }) => {
         email: formData.email,
         password: formData.password,
       });
-
+  
       if (error) throw error;
-      console.log(data);
+  
+      // Pass the authentication data to the parent component
       setToken(data);
+  
+      // Navigate to the homepage or perform any other actions
       navigate('/homepage');
     } catch (error) {
-      alert(error);
+      alert(error.message);
     }
   }
+  
 
   return (
     <div className="login-container">
