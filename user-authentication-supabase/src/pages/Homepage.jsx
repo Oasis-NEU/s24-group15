@@ -50,7 +50,11 @@ const Homepage = ({ token }) => {
   
       alert('Profile updated successfully!');
       console.log('Navigating to profile page...');
-      navigate('/profile');
+      navigate('/profile', {
+        state: {
+          userId: userId
+        }
+      });
     } catch (error) {
       alert('Error updating profile: ' + error.message);
     }

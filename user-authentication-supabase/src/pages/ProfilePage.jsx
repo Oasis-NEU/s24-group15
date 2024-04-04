@@ -1,32 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../client';
+import { useLocation } from 'react-router-dom';
 
 const ProfilePage = () => {
   const [userInfo, setUserInfo] = useState(null);
 
-  useEffect(() => {
-    async function fetchProfile() {
-        try {
-          const { data, error } = await supabase
-            .from('profile')
-            .select('*')
-            .single();
+  const location = useLocation();
+  let userId = location.state.userId;
+  async function fetchProfile() {
+    try {
+      const { data, error } = await supabase
+          .from('profile')
+          .select('*')
+          .eq('id',userId)
+          .single();
+
+          console.log(data)
       
-          if (error) {
-            throw error;
-          }
+        if (error) {
+          throw error;
+        }
       
-          if (!data) {
-            console.error('No profile data found');
-            return;
-          }
+        if (!data) {
+          console.error('No profile data found');
+          return;
+        }
       
-          setUserInfo(data);
-        } catch (error) {
-          console.error('Error fetching profile:', error.message);
+        setUserInfo(data);
+      } catch (error) {
+        console.error('Error fetching profile:', error.message);
         }
       }
-    }, []);
+    useEffect(() => {
+      fetchProfile()
+    },[]);
+    
   
 
   return (
