@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {SignUp, LogIn, Homepage} from './pages';
-import {Routes, Route} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { SignUp, LogIn, Homepage, ProfilePage } from './pages';
+import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
   const [token, setToken] = useState(false);
@@ -26,6 +26,8 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/" element={<LogIn setToken={setToken} />} />
         {token && <Route path="/homepage" element={<Homepage token={token} />} />}
+        {/* Make sure the path is correct and the component is rendered properly */}
+        {token && <Route path="/profile" element={<ProfilePage />} />} 
       </Routes>
     </div>
   );

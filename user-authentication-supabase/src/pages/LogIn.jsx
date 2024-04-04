@@ -1,5 +1,3 @@
-// LogIn.jsx
-
 import React, { useState } from 'react'; // Importing React and useState hook
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../client';

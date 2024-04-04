@@ -1,9 +1,23 @@
-//homepage.jsx
 import React, { useState } from 'react';
 import { supabase } from '../client';
+import { useNavigate } from 'react-router-dom';
 
 const Homepage = ({ token }) => {
   const [fullName, setFullName] = useState('');
+  const [linkedInLink, setLinkedInLink] = useState('');
+  const [university, setUniversity] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [major, setMajor] = useState('');
+  const [gpa, setGPA] = useState('');
+  const [honors_awards, setHonAwr] = useState('');
+  const [age, setAge] = useState('');
+  const [experience, setExperience] = useState('');
+  const [phone_number, setPhoneNumber] = useState('');
+  const [activities, setActivities] = useState('');
+  const [skills, setSkills] = useState('');
+  const [projects, setProjects] = useState('');
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -13,6 +27,20 @@ const Homepage = ({ token }) => {
         .from('profile')
         .update({
           display_name: fullName,
+          linkedIn_link: linkedInLink,
+          university: university,
+          uni_start_date: startDate,
+          uni_end_date: endDate,
+          major: major,
+          gpa: gpa,
+          honors_awards: honors_awards,
+          age: age,
+          experience: experience,
+          phone_number: phone_number,
+          activities: activities,
+          skills: skills,
+          projects: projects,
+
         })
         .eq('id', userId);
   
@@ -21,13 +49,12 @@ const Homepage = ({ token }) => {
       }
   
       alert('Profile updated successfully!');
+      console.log('Navigating to profile page...');
+      navigate('/profile');
     } catch (error) {
       alert('Error updating profile: ' + error.message);
     }
   }
-  
-  
-  
 
   return (
     <div>
@@ -40,6 +67,98 @@ const Homepage = ({ token }) => {
           placeholder="Full Name"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
+        />
+        {/* Input field for LinkedIn link */}
+        <input
+          type="url"
+          name="linkedInLink"
+          placeholder="LinkedIn Link"
+          value={linkedInLink}
+          onChange={(e) => setLinkedInLink(e.target.value)}
+        />
+        <input
+          type="text"
+          name="university"
+          placeholder="University"
+          value={university}
+          onChange={(e) => setUniversity(e.target.value)}
+        />
+        <input
+          type="date"
+          name="startDate"
+          placeholder="Start Date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+        <input
+          type="date"
+          name="endDate"
+          placeholder="Graduation Date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
+        <input
+          type="text"
+          name="major"
+          placeholder="Major"
+          value={major}
+          onChange={(e) => setMajor(e.target.value)}
+        />
+        <input
+          type="number"
+          name="gpa"
+          placeholder="GPA"
+          value={gpa}
+          onChange={(e) => setGPA(e.target.value)}
+        />
+        <input
+          type="text"
+          name="honors_awards"
+          placeholder="Honors/Awards"
+          value={honors_awards}
+          onChange={(e) => setHonAwr(e.target.value)}
+        />
+        <input
+          type="number"
+          name="age"
+          placeholder="Age"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+        <input
+          type="text"
+          name="experience"
+          placeholder="Experience"
+          value={experience}
+          onChange={(e) => setExperience(e.target.value)}
+        />
+        <input
+          type="tel"
+          name="phone_number"
+          placeholder="Phone Number"
+          value={phone_number}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+        />
+        <input
+          type="text"
+          name="activities"
+          placeholder="Activities"
+          value={activities}
+          onChange={(e) => setActivities(e.target.value)}
+        />
+        <input
+          type="text"
+          name="skills"
+          placeholder="Skills"
+          value={skills}
+          onChange={(e) => setSkills(e.target.value)}
+        />
+        <input
+          type="text"
+          name="projects"
+          placeholder="Projects"
+          value={projects}
+          onChange={(e) => setProjects(e.target.value)}
         />
         <button type="submit">Submit</button>
       </form>
