@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../client';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,6 +18,45 @@ const Homepage = ({ token }) => {
   const [skills, setSkills] = useState('');
   const [projects, setProjects] = useState('');
   const navigate = useNavigate();
+
+  // Fetch user's profile data when component mounts
+  useEffect(() => {
+    async function fetchProfileData() {
+      try {
+        const userId = token.user.id;
+        const { data, error } = await supabase
+          .from('profile')
+          .select('*')
+          .eq('id', userId)
+          .single();
+
+        if (error) {
+          throw error;
+        }
+
+        if (data) {
+          setFullName(data.display_name || '');
+          setLinkedInLink(data.linkedIn_link || '');
+          setUniversity(data.university || '');
+          setStartDate(data.uni_start_date || '');
+          setEndDate(data.uni_end_date || '');
+          setMajor(data.major || '');
+          setGPA(data.gpa || '');
+          setHonAwr(data.honors_awards || '');
+          setAge(data.age || '');
+          setExperience(data.experience || '');
+          setPhoneNumber(data.phone_number || '');
+          setActivities(data.activities || '');
+          setSkills(data.skills || '');
+          setProjects(data.projects || '');
+        }
+      } catch (error) {
+        console.error('Error fetching profile data:', error.message);
+      }
+    }
+
+    fetchProfileData();
+  }, [token]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -40,20 +79,19 @@ const Homepage = ({ token }) => {
           activities: activities,
           skills: skills,
           projects: projects,
-
         })
         .eq('id', userId);
-  
+
       if (error) {
         throw error;
       }
-  
+
       alert('Profile updated successfully!');
       console.log('Navigating to profile page...');
       navigate('/profile', {
         state: {
-          userId: userId
-        }
+          userId: userId,
+        },
       });
     } catch (error) {
       alert('Error updating profile: ' + error.message);
@@ -64,7 +102,6 @@ const Homepage = ({ token }) => {
     <div>
       <h2>Homepage</h2>
       <form onSubmit={handleSubmit}>
-        {/* Input field for user's full name */}
         <input
           type="text"
           name="fullName"
@@ -72,7 +109,6 @@ const Homepage = ({ token }) => {
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
         />
-        {/* Input field for LinkedIn link */}
         <input
           type="url"
           name="linkedInLink"

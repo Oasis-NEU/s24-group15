@@ -31,12 +31,17 @@ const LogIn = ({ setToken }) => {
       // Pass the authentication data to the parent component
       setToken(data);
   
-      // Navigate to the homepage or perform any other actions
-      navigate('/homepage');
+      // Navigate to the profile page directly after successful login
+      navigate('/profile', {
+        state: {
+          userId: data.user.id 
+        }
+      });
     } catch (error) {
       alert(error.message);
     }
   }
+  
   
 
   return (
