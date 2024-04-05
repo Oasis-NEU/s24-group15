@@ -1,0 +1,149 @@
+
+body {
+    background-color: #d3e0dc; 
+    color: #333; 
+    font-family: 'Courier New', Courier, monospace; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    min-height: 100vh; 
+}
+
+
+.container {
+    width: 1450px; 
+    max-width: 100%; 
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #412803f3; 
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+
+h2 {
+    color: #6d997a;
+    margin-bottom: 30px;
+    font-size: 42px; 
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+
+.subheading {
+    font-size: 30px; 
+    font-weight: bold; 
+    font-family: 'Courier New', Courier, monospace; 
+    color: #6d997a; 
+}
+
+
+
+.info-item {
+    margin-bottom: 20px; 
+    font-size: 20px; 
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+
+.styled-text {
+    font-size: 24px; 
+    color: #6d997a;
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+
+.big-name {
+    font-size: 60px; 
+    font-weight: bold; 
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+
+.linkedin-link {
+    margin-top: -20px; 
+}
+
+.linkedin-link a {
+    color: #6d997a; 
+    font-size: 30px; 
+    text-decoration: none; 
+}
+
+.linkedin-link a:hover {
+    text-decoration: underline;
+}
+
+
+.university {
+    font-size: 42px; 
+    font-weight: bold; 
+}
+
+.major {
+    margin-left: 20px; 
+    font-size: 20px; 
+}
+
+
+.gpa {
+    margin-left: 20px; 
+    font-size: 20px; 
+}
+
+
+.honors-awards {
+    margin-left: 20px; 
+    font-size: 20px; 
+}
+
+
+.profile-link input {
+    width: 100%;
+    padding: 12px; 
+    border: none;
+    background-color: #f0f9f8; 
+    color: #333;
+    border-radius: 10px; 
+    font-size: 16px; 
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+
+.copy-button {
+    width: 100%;
+    padding: 12px; 
+    background-color: #6d997a; 
+    color: #fff; 
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px; 
+    transition: background-color 0.3s ease; 
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+.copy-button:hover {
+    background-color: #5b896c; 
+}
+
+
+.edit-button {
+    width: 100%;
+    padding: 12px; 
+    background-color: #6d997a; 
+    color: #fff; 
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    font-size: 16px; 
+    transition: background-color 0.3s ease; 
+    font-family: 'Courier New', Courier, monospace; 
+}
+
+.edit-button:hover {
+    background-color: #5b896c; 
+}

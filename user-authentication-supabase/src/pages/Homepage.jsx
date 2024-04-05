@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../client';
 import { useNavigate } from 'react-router-dom';
+import './Homepage.css'; // Import the CSS file
 
 const Homepage = ({ token }) => {
   const [fullName, setFullName] = useState('');
@@ -19,7 +20,6 @@ const Homepage = ({ token }) => {
   const [projects, setProjects] = useState('');
   const navigate = useNavigate();
 
-  // Fetch user's profile data when component mounts
   useEffect(() => {
     async function fetchProfileData() {
       try {
@@ -99,9 +99,9 @@ const Homepage = ({ token }) => {
   }
 
   return (
-    <div>
-      <h2>Homepage</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="container">
+      <h2 style={{ color: '#4caf50' }}>Edit Profile</h2> {/* Green heading */}
+      <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"
           name="fullName"

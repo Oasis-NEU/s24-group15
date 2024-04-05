@@ -1,7 +1,7 @@
-import React, { useState } from 'react'; // Importing React and useState hook
+import React, { useState } from 'react'; 
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../client';
-import './LogIn.css'; // Import the CSS file
+import './LogIn.css'; 
 
 const LogIn = ({ setToken }) => {
   let navigate = useNavigate();
@@ -28,10 +28,10 @@ const LogIn = ({ setToken }) => {
   
       if (error) throw error;
   
-      // Pass the authentication data to the parent component
+      
       setToken(data);
   
-      // Navigate to the profile page directly after successful login
+
       navigate('/profile', {
         state: {
           userId: data.user.id 

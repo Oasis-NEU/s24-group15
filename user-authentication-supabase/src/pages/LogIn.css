@@ -1,61 +1,58 @@
-/* LogIn.css */
 
-/* Center the whole page content */
 body {
-  background-color: #d3e0dc; /* Soft green background color resembling grass */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a more natural font */
+  background-color: #d3e0dc; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-/* Container styling with nature-inspired colors */
 .login-container {
-  width: 320px; /* Adjust the width as needed */
-  padding: 30px; /* Add some padding */
-  border: 2px solid #6d997a; /* Dark green border resembling tree bark */
-  border-radius: 15px; /* Add border radius */
-  background-color: #f7f9f8; /* Light grayish-green background color resembling foliage */
+  width: 320px; 
+  padding: 30px; 
+  border: 2px solid #6d997a; 
+  border-radius: 15px; 
+  background-color: #f7f9f8; 
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Input field styling */
+
 .login-input {
-  width: 100%; /* Take up full width */
-  margin-bottom: 20px; /* Add some space between inputs */
-  padding: 12px; /* Add padding */
-  border: 2px solid #a5c1ad; /* Light green border */
-  border-radius: 8px; /* Add border radius */
-  font-size: 16px; /* Increase font size for better readability */
+  width: 100%; 
+  margin-bottom: 20px; 
+  padding: 12px; 
+  border: 2px solid #a5c1ad; 
+  border-radius: 8px; 
+  font-size: 16px;
 }
 
-/* Submit button styling with nature-inspired colors */
+
 .login-submit {
-  width: 100%; /* Take up full width */
-  padding: 12px; /* Add padding */
-  background-color: #6d997a; /* Dark green button color resembling leaves */
-  color: #fff; /* White text color */
-  border: none; /* Remove border */
-  border-radius: 8px; /* Add border radius */
-  cursor: pointer; /* Add pointer cursor */
-  font-size: 16px; /* Increase font size for better readability */
-  transition: background-color 0.3s ease; /* Add smooth transition effect */
+  width: 100%; 
+  padding: 12px; 
+  background-color: #6d997a; 
+  color: #fff; 
+  border: none; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  font-size: 16px; 
+  transition: background-color 0.3s ease; 
 }
 
 .login-submit:hover {
-  background-color: #5b896c; /* Darker green on hover */
+  background-color: #5b896c; 
 }
 
-/* Signup link styling with nature-inspired colors */
+
 .signup-link {
-  color: #6d997a; /* Dark green color resembling leaves */
-  text-decoration: none; /* Remove underline */
-  font-size: 14px; /* Decrease font size slightly */
+  color: #6d997a; 
+  text-decoration: none; 
+  font-size: 14px; 
 }
 
 .signup-link:hover {
-  text-decoration: underline; /* Add underline on hover */
+  text-decoration: underline; 
 }

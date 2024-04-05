@@ -1,0 +1,97 @@
+
+body {
+    background-color: #d3e0dc; 
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 40px;
+    background-color: #f7f9f8; 
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); 
+    overflow: hidden;
+}
+
+
+h2 {
+    color: #6d997a; 
+    margin-bottom: 30px;
+    font-size: 36px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+}
+
+
+label {
+    color: #6d997a; 
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="number"],
+input[type="date"],
+input[type="tel"],
+textarea {
+    padding: 20px;
+    border: none;
+    background-color: #f0f9f8; 
+    color: #333;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+    font-size: 18px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+    outline: none;
+    background-color: #d3e0dc; 
+    box-shadow: 0 0 10px rgba(109, 153, 122, 0.5); 
+}
+
+
+button[type="submit"] {
+    padding: 20px 40px;
+    background-color: #6d997a; 
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; 
+    font-size: 24px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+}
+
+button[type="submit"]:hover {
+    background-color: #5b896c; 
+    transform: translateY(-2px); 
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4); 
+}
+
+button[type="submit"]:active {
+    transform: translateY(1px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
